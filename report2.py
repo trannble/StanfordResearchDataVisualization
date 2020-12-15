@@ -33,8 +33,8 @@ def main():
     for key in eng_data.keys():
         if key != KEY_FEMALE and key != KEY_MALE:
             model2_data[key] = 0
-    update_model2_data(model2_data, eng_data, total_headcount)
-    visualize_model(model2_data, "Stanford Engineering Number of Professoriate Faculty By Race/Ethnicity")
+    update_model2_data(model2_data, eng_data)
+    visualize_model(model2_data, f"Stanford Engineering Number of Professoriate Faculty By Race/Ethnicity, {total_headcount} ")
 
 
 def visualize_model(model_data, title):
@@ -53,18 +53,17 @@ def visualize_model(model_data, title):
     plt.show()
 
 
-def update_model2_data(model2_data, eng_data, total_headcount):
+def update_model2_data(model2_data, eng_data):
     """
     This function updates the second model data.
 
     :param model2_data: the model2 calculated data
     :param eng_data: the entire data indexed
-    :param total_headcount: int
     :return: none, updates model2_data
     """
     for key, value in eng_data.items():
         if key in model2_data:
-            model2_data[key] = eng_data[key] / total_headcount * 100
+            model2_data[key] = eng_data[key]
 
 
 def update_model1_data(model1_data, eng_data, total_headcount):
